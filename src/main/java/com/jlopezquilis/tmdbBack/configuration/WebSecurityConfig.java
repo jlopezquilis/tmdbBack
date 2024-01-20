@@ -18,6 +18,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+    //Improved way of customizing security configurations (instead of extending WebSecurityConfigurerAdapter)
+    //See documentation: https://spring.io/blog/2022/02/21/spring-security-without-the-websecurityconfigureradapter/
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
@@ -34,6 +36,7 @@ public class WebSecurityConfig {
                 .build();
     }
 
+    //Adding basic user data in security framework
     UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername("admin")
@@ -44,6 +47,7 @@ public class WebSecurityConfig {
         return manager;
     }
 
+    //For modify the auth protocol, adding the admin user defined above
     @Bean
     AuthenticationManager authManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)

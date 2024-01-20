@@ -1,11 +1,9 @@
 package com.jlopezquilis.tmdbBack.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
 
 import java.util.List;
 
-@Getter
 public class MovieList {
     @JsonProperty("page")
     Integer page;
@@ -18,4 +16,20 @@ public class MovieList {
 
     @JsonProperty("results")
     List<Movie> results;
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public Long getTotalResults() {
+        return total_results;
+    }
+
+    public Long getTotalPages() {
+        return total_pages;
+    }
+
+    public List<Movie> getResults() {
+        return results;
+    }
 }
