@@ -3,7 +3,9 @@ The aim of this project is creating an API which uses the existent one from **Th
 
 ## How to use it
 The first step is to authenticate.
-As this is a 
+The credentials you will need are:
+* **Username:** admin
+* **Password:** password
 
 The API is designed in a way the HTTP requests are made using as a baseURL [localhost:8080]().
 
