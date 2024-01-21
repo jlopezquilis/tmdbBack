@@ -114,7 +114,7 @@ public class MovieControllerTest {
         // Arrange
         String name = "The Shawshank Redemption";
         List<Movie> movies = Arrays.asList(new Movie());
-        when(movieService.fetchMoviesByQuery(name)).thenReturn(movies);
+        when(movieService.fetchMoviesByName(name)).thenReturn(movies);
 
         // Act & Assert
         mockMvc.perform(get("/movies/search/" + name)

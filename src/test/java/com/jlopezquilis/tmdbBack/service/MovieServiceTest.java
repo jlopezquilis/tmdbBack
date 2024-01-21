@@ -40,14 +40,14 @@ public class MovieServiceTest {
     @Test
     public void testFetchMoviesByQuery() {
         String query = "The Shawshank Redemption";
-        List<Movie> movies = movieService.fetchMoviesByQuery(query);
+        List<Movie> movies = movieService.fetchMoviesByName(query);
         Assertions.assertFalse(movies.isEmpty());
         for (Movie movie : movies) {
             Assertions.assertTrue(isTitleContained(query, movie.getTitle()));
         }
 
         query = "Lorem ipsum dolor sit amet.";
-        movies = movieService.fetchMoviesByQuery(query);
+        movies = movieService.fetchMoviesByName(query);
         Assertions.assertTrue(movies.isEmpty());
     }
 

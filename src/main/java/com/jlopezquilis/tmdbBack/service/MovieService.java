@@ -69,7 +69,7 @@ public class MovieService {
         }
     }
 
-    public List<Movie> fetchMoviesByQuery(String query) {
+    public List<Movie> fetchMoviesByName(String query) {
 
         URI uri = getURI(tmdbSearchMovieUrl, new String [] {tmdbBaseUrl, tmdbApiKey, query});
         MovieList movieResults = restTemplate.getForObject(uri, MovieList.class);

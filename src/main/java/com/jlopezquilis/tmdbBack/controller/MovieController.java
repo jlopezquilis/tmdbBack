@@ -32,6 +32,6 @@ public class MovieController {
 
     @GetMapping("/search/{name}")
     public List<Movie> getMovieSearchResult(@PathVariable("name") String name){
-        return movieService.fetchMoviesByQuery(name);
+        return movieService.fetchMoviesByName(name);
     }
 }
