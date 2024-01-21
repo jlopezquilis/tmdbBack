@@ -72,7 +72,7 @@ public class MovieControllerTest {
         when(movieService.fetchMovieList()).thenReturn(movies);
 
         // Act & Assert
-        mockMvc.perform(get("/tmdbBack")
+        mockMvc.perform(get("/movies")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print())
@@ -88,7 +88,7 @@ public class MovieControllerTest {
         when(movieService.fetchMovieById(movieId)).thenReturn(movie);
 
         // Act & Assert
-        mockMvc.perform(get("/tmdbBack/" + movieId)
+        mockMvc.perform(get("/movies/" + movieId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print())
@@ -103,7 +103,7 @@ public class MovieControllerTest {
         when(movieService.fetchMovieById(movieId)).thenReturn(null);
 
         // Act & Assert
-        mockMvc.perform(get("/tmdbBack/" + movieId)
+        mockMvc.perform(get("/movies/" + movieId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
@@ -112,14 +112,14 @@ public class MovieControllerTest {
     @WithMockUser(username = "admin", password = "password")
     public void testGetMovieSearchResult() throws Exception {
         // Arrange
-        String query = "The Shawshank Redemption";
+        String name = "The Shawshank Redemption";
         List<Movie> movies = Arrays.asList(new Movie());
-        when(movieService.fetchMoviesByQuery(query)).thenReturn(movies);
+        when(movieService.fetchMoviesByQuery(name)).thenReturn(movies);
 
         // Act & Assert
-        mockMvc.perform(get("/tmdbBack/search")
+        mockMvc.perform(get("/movies/search/" + name)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .param("query", query))
+                        .param("name", name))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(jsonPath("$[0].original_title").value("The Shawshank Redemption"));

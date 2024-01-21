@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tmdbBack")
+@RequestMapping("/movies")
 public class MovieController {
     @Autowired
     private MovieService movieService;
@@ -30,8 +30,8 @@ public class MovieController {
         return ResponseEntity.ok(movie);
     }
 
-    @GetMapping("/search")
-    public List<Movie> getMovieSearchResult(@RequestParam("query") String query){
-        return movieService.fetchMoviesByQuery(query);
+    @GetMapping("/search/{name}")
+    public List<Movie> getMovieSearchResult(@PathVariable("name") String name){
+        return movieService.fetchMoviesByQuery(name);
     }
 }
