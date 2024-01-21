@@ -19,6 +19,13 @@ public class MovieList {
     @JsonProperty("results")
     List<Movie> results;
 
+    public Integer getPage() {
+        return page;
+    }
+
+    public List<Movie> getResults() {
+        return results;
+    }
     public Long getTotalResults() {
         return total_results;
     }
