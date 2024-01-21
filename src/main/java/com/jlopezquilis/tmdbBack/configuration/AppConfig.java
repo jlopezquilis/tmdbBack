@@ -10,7 +10,6 @@ import org.springframework.web.client.RestTemplate;
 @PropertySource(value = {"classpath:application.properties", "classpath:application-secret.properties" })
 public class AppConfig
 {
-
     @Bean
     public RestTemplate restTemplate(){return new RestTemplate();}
 
